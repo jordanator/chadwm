@@ -57,7 +57,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = {" ", " ", " ", " ", " "};
+static const char *tags[] = {" 1 ", " 2 ", " 3 ", " 4 ", " 5 "};
+// static char *tags[] = {" ", "", " ", " ", " "};
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                   SchemeTag4, SchemeTag5
@@ -74,8 +75,8 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
        	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
+        { "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
+        { "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
       	{ "eww",      NULL,       NULL,       0,            0,           1,           -1 },
 };
 
@@ -108,7 +109,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -121,7 +122,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = {  "st", NULL }; // change this to your term
+static const char *termcmd[]  = {  "alacritty", NULL }; // change this to your term
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
 static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
 static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
@@ -129,10 +130,19 @@ static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_c,      spawn,          {.v = rofi } },
+    { MODKEY | ShiftMask,           XK_c,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd }},  
 
-    {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY, XK_u, spawn,   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
+    {MODKEY | ControlMask, XK_u, spawn, SHCMD("flameshot gui -p ~/Pictures/screenshots")},
+    {MODKEY, XK_u, spawn, SHCMD("flameshot full -p ~/Pictures/screenshots")},
+    {MODKEY, XK_w, spawn, SHCMD("$BROWSER")},
+    {MODKEY, XK_semicolon, spawn, SHCMD("skippy-xd")},
+    {MODKEY|ControlMask|ShiftMask, XK_p, spawn, SHCMD("passmenu -c -l 10")},
+    {MODKEY|ControlMask|ShiftMask, XK_o, spawn, SHCMD("otpmenu -c -l 10")},
+    {MODKEY, XK_F1, spawn, SHCMD("msi-rgb-switch")},
+    {MODKEY, XK_F2, spawn, SHCMD("screenkey -s small --scr 1 -p fixed -g 300x50+800+950 --opacity .8 --font-color white")},
+    {MODKEY, XK_F3, spawn, SHCMD("killall screenkey")},
+    {MODKEY|ControlMask|ShiftMask, XK_y, spawn, SHCMD("ytfzf -D")},
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},
     { MODKEY,                       XK_b,      togglebar,      {0} },
