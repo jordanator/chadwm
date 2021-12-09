@@ -118,6 +118,7 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#include <X11/XF86keysym.h>
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -126,6 +127,9 @@ static const char *termcmd[]  = {  "alacritty", NULL }; // change this to your t
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
 static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
 static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
+static const char *upvol[]          = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",     NULL };
+static const char *downvol[]        = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",     NULL };
+static const char *mutevol[]        = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -145,6 +149,10 @@ static Key keys[] = {
     {MODKEY|ControlMask|ShiftMask, XK_y, spawn, SHCMD("ytfzf -D")},
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+    {0, XF86XK_AudioMute, spawn, {.v = mutevol } },
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

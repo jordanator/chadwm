@@ -43,16 +43,9 @@ mem() {
 	printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
-wlan() {
-	case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
-	up) printf "^c$black^ ^b$blue^ 󰤨 ^d^%s" " ^c$blue^Connected" ;;
-	down) printf "^c$black^ ^b$blue^ 󰤭 ^d^%s" " ^c$blue^Disconnected" ;;
-	esac
-}
-
 clock() {
-	printf "^c$black^ ^b$darkblue^ 󱑆 "
-	printf "^c$black^^b$blue^ $(date '+%a, %I:%M %p') "
+	printf "^c$white^ 󱑆 "
+	printf "^c$white^ $(date '+%a %d/%m %I:%M %p') "
 }
 
 while true; do
@@ -60,5 +53,5 @@ while true; do
 	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
-	sleep 1 && xsetroot -name "$updates | $(battery) | $(brightness) | $(cpu) | $(mem) | $(clock) "
+	sleep 1 && xsetroot -name "$updates      $(battery)      $(brightness)      $(cpu)      $(mem)      $(clock)      "
 done
