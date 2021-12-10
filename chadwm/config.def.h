@@ -123,7 +123,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = {  "alacritty", NULL }; // change this to your term
+static const char *termcmd[]  = {  "st", NULL }; // change this to your term
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
 static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
 static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
@@ -254,18 +254,18 @@ static Button buttons[] = {
 		 * to control these separately (i.e. to retain the feature to move a tiled window
 		 * into a floating position).
 		 */
-		{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
-    { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-    { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-    { ClkClientWin,         ControlMask,    Button1,        dragmfact,      {0} },
-    { ClkClientWin,         ControlMask,    Button3,        dragcfact,      {0} },
-    { ClkTagBar,            0,              Button1,        view,           {0} },
-    { ClkTagBar,            0,              Button3,        toggleview,     {0} },
-    { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-    { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-    { ClkTabBar,            0,              Button1,        focuswin,       {0} },
-    { ClkTabBar,            0,              Button1,        focuswin,       {0} },
-    { ClkTabPrev,           0,              Button1,        movestack,      { .i = -1 } },
-    { ClkTabNext,           0,              Button1,        movestack,      { .i = +1 } },
-    { ClkTabClose,          0,              Button1,        killclient,     {0} },
+		// { ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
+  //   { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+  //   { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+  //   { ClkClientWin,         ControlMask,    Button1,        dragmfact,      {0} },
+  //   { ClkClientWin,         ControlMask,    Button3,        dragcfact,      {0} },
+  //   { ClkTagBar,            0,              Button1,        view,           {0} },
+  //   { ClkTagBar,            0,              Button3,        toggleview,     {0} },
+  //   { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+  //   { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+  //   { ClkTabBar,            0,              Button1,        focuswin,       {0} },
+  //   { ClkTabBar,            0,              Button1,        focuswin,       {0} },
+  //   { ClkTabPrev,           0,              Button1,        movestack,      { .i = -1 } },
+  //   { ClkTabNext,           0,              Button1,        movestack,      { .i = +1 } },
+  //   { ClkTabClose,          0,              Button1,        killclient,     {0} },
 };
