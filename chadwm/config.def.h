@@ -147,6 +147,8 @@ static Key keys[] = {
     {MODKEY, XK_F2, spawn, SHCMD("screenkey -s small --scr 1 -p fixed -g 300x50+800+950 --opacity .8 --font-color white")},
     {MODKEY, XK_F3, spawn, SHCMD("killall screenkey")},
     {MODKEY|ControlMask|ShiftMask, XK_y, spawn, SHCMD("ytfzf -D")},
+    {MODKEY|ShiftMask, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &") },
+    {MODKEY|ControlMask|ShiftMask, XK_z, spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
