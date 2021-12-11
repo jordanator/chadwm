@@ -6,13 +6,13 @@
 interval=0
 
 # load colors!
-. ~/.dwm/bar/themes/onedark
+. ~/.dwm/bar/themes/gruvchad
 
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
 	printf "^c$black^ ^b$green^ CPU"
-	printf "^c$white^ ^b$grey^ $cpu_val"
+	printf "^c$white^ ^b$black^ $cpu_val"
 }
 
 pkg_updates() {
@@ -29,7 +29,25 @@ pkg_updates() {
 
 battery() {
 	get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
-	printf "^c$blue^   $get_capacity"
+    status="$(cat /sys/class/power_supply/BAT1/status)"
+
+	if [ "$status" = "Charging" ] || [ "$status" = "Full" ]; then
+	    printf "^c$blue^   $get_capacity"
+	else
+        if [ "$get_capacity" -ge "90" ]; then
+            printf "^c$blue^    $get_capacity"
+        elif [ "$get_capacity" -ge "70" ]; then
+            printf "^c$blue^    $get_capacity"
+        elif [ "$get_capacity" -ge "50" ]; then
+            printf "^c$blue^    $get_capacity"
+        elif [ "$get_capacity" -ge "25" ]; then
+            printf "^c$blue^    $get_capacity"
+        elif [ "$get_capacity" -ge "10" ]; then
+            printf "^c$blue^    $get_capacity"
+        else
+            printf "^c$blue^    $get_capacity"
+        fi
+	fi
 }
 
 brightness() {
@@ -39,7 +57,7 @@ brightness() {
 
 mem() {
 	printf "^c$blue^^b$black^  "
-	printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+	printf "^c$darkblue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 clock() {
