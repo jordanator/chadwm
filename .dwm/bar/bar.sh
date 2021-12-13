@@ -31,7 +31,7 @@ battery() {
 	get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
     status="$(cat /sys/class/power_supply/BAT1/status)"
 
-	if [ "$status" = "Charging" ] || [ "$status" = "Full" ]; then
+	if [ "$status" = "Charging" ] || [ "$status" = "Full" ] || [ "$status" = "Unknown" ]; then
 	    printf "^c$blue^   $get_capacity"
 	else
         if [ "$get_capacity" -ge "90" ]; then

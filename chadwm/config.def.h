@@ -149,6 +149,8 @@ static Key keys[] = {
     {MODKEY|ControlMask|ShiftMask, XK_y, spawn, SHCMD("ytfzf -D")},
     {MODKEY|ShiftMask, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &") },
     {MODKEY|ControlMask|ShiftMask, XK_z, spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
+    {MODKEY, XK_v, spawn, SHCMD("vpnup")},
+    {MODKEY|ShiftMask, XK_v, spawn, SHCMD("vpndown")},
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
@@ -156,7 +158,7 @@ static Key keys[] = {
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 
     { MODKEY,                       XK_b,      togglebar,      {0} },
-    { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
+    { MODKEY|ControlMask,           XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
     { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
