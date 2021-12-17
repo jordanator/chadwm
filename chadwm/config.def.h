@@ -123,7 +123,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = {  "st", NULL }; // change this to your term
+static const char *termcmd[]  = { "st", NULL }; // change this to your term
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
 static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
 static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
@@ -151,6 +151,7 @@ static Key keys[] = {
     {MODKEY|ControlMask|ShiftMask, XK_z, spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
     {MODKEY, XK_v, spawn, SHCMD("vpnup")},
     {MODKEY|ShiftMask, XK_v, spawn, SHCMD("vpndown")},
+
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
@@ -195,7 +196,7 @@ static Key keys[] = {
     { MODKEY|ControlMask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
 
     { MODKEY|ControlMask,           XK_t,      togglegaps,     {0} },
-    { MODKEY|ControlMask|ShiftMask,             XK_d,      defaultgaps,    {0} },
+    { MODKEY|ControlMask|ShiftMask, XK_d,      defaultgaps,    {0} },
 
     { MODKEY,                       XK_q,      killclient,     {0} },
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -204,7 +205,7 @@ static Key keys[] = {
     { MODKEY|ControlMask,           XK_g,      setlayout,      {.v = &layouts[10]} },
     { MODKEY|ControlMask|ShiftMask, XK_t,      setlayout,      {.v = &layouts[13]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
-    { MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+    { MODKEY|ControlMask,		        XK_comma,  cyclelayout,    {.i = -1 } },
     { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
     { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
     { MODKEY,                       XK_f,      togglefullscr,  {0} },
@@ -214,9 +215,9 @@ static Key keys[] = {
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_minus, 		setborderpx,    {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_p, 	        setborderpx,    {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_w, 	        setborderpx,    {.i = default_border } },
+    { MODKEY|ShiftMask,             XK_minus,  setborderpx,    {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_p, 	   setborderpx,    {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_w, 	   setborderpx,    {.i = default_border } },
 
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
@@ -227,9 +228,7 @@ static Key keys[] = {
     TAGKEYS(                        XK_7,                      6)
     TAGKEYS(                        XK_8,                      7)
     TAGKEYS(                        XK_9,                      8)
-    {
-        MODKEY|ControlMask,           XK_q,      quit,           {0}
-    },
+    { MODKEY|ControlMask,           XK_q,      quit,           {0} },
     { MODKEY|ShiftMask,             XK_r,      quit,           {1} },
     { MODKEY,                       XK_e,      hidewin,        {0} },
     { MODKEY|ShiftMask,             XK_e,      restorewin,     {0} },
