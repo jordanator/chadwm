@@ -62,7 +62,7 @@ mem() {
 
 clock() {
 	printf "^c$white^ 󱑆 "
-	printf "^c$white^ $(date '+%a %d/%m %I:%M:%S %p') "
+	printf "^c$white^ $(date '+%a %b %d %I:%M:%S %p') "
 }
 
 while true; do
