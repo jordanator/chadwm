@@ -151,6 +151,7 @@ static Key keys[] = {
     {MODKEY|ControlMask|ShiftMask, XK_z, spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
     {MODKEY, XK_v, spawn, SHCMD("vpnup")},
     {MODKEY|ShiftMask, XK_v, spawn, SHCMD("vpndown")},
+    {ControlMask|ShiftMask, XK_l, spawn, SHCMD("betterlockscreen -l dimblur")},
 
     {0, XF86MonBrightnessDown, spawn, {.v = xd}},
     {0, XF86MonBrightnessUp, spawn, {.v = xi}},

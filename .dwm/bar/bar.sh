@@ -11,8 +11,8 @@ interval=0
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-	printf "^c$black^ ^b$green^ CPU"
-	printf "^c$white^ ^b$black^ $cpu_val"
+	printf "^c$green^  "
+	printf "^c$white^ ^b$black^$cpu_val"
 }
 
 pkg_updates() {
@@ -56,8 +56,8 @@ brightness() {
 }
 
 mem() {
-	printf "^c$blue^^b$black^  "
-	printf "^c$darkblue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+	printf "^c$blue^^b$black^  "
+	printf "^c$darkblue^$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 clock() {
