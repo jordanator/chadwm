@@ -217,7 +217,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
     { MODKEY|ControlMask|ShiftMask, XK_minus,  setborderpx,    {.i = -1 } },
-    { MODKEY|ControlMask|ShiftMask, XK_plus, 	 setborderpx,    {.i = +1 } },
+    { MODKEY|ControlMask|ShiftMask, XK_equal,  setborderpx,    {.i = +1 } },
     { MODKEY|ShiftMask,             XK_w, 	   setborderpx,    {.i = default_border } },
 
     TAGKEYS(                        XK_1,                      0)
