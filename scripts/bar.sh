@@ -6,7 +6,7 @@
 interval=0
 
 # load colors!
-. ~/.dwm/bar/themes/gruvchad
+. ~/.config/chadwm/scripts/bar_themes/onedark
 
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
@@ -63,7 +63,21 @@ mem() {
 clock() {
 	printf "^c$white^ 󱑆 "
 	printf "^c$white^ $(date '+%a %b %d %I:%M:%S %p') "
+	#printf "^c$blue^^b$black^  "
+	#printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
+
+wlan() {
+	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+	up) printf "^c$black^ ^b$blue^ 󰤨 ^d^%s" " ^c$blue^Connected" ;;
+	down) printf "^c$black^ ^b$blue^ 󰤭 ^d^%s" " ^c$blue^Disconnected" ;;
+	esac
+}
+
+#clock() {
+#	printf "^c$black^ ^b$darkblue^ 󱑆 "
+#	printf "^c$black^^b$blue^ $(date '+%I:%M %p')  "
+#}
 
 while true; do
 
