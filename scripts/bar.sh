@@ -11,8 +11,11 @@ interval=0
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-	printf "^c$green^  "
-	printf "^c$white^ ^b$black^$cpu_val"
+	# printf "^c$green^  "
+	# printf "^c$white^ ^b$black^$cpu_val"
+
+  printf "^c$black^ ^b$green^ CPU"
+	printf "^c$white^ ^b$grey^ $cpu_val"
 }
 
 pkg_updates() {
@@ -56,14 +59,14 @@ brightness() {
 }
 
 mem() {
-	printf "^c$blue^^b$black^  "
+	printf "^c$blue^^b$black^   "
 	printf "^c$darkblue^$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 clock() {
-	printf "^c$white^ 󱑆 "
-	printf "^c$white^ $(date '+%a %b %d %I:%M:%S %p') "
-	#printf "^c$blue^^b$black^  "
+	# printf "^c$white^ 󱑆 "
+	printf "^c$black^^b$darkblue^ 󱑆 "
+	printf "^c$black^^b$blue^ $(date '+%a %b %d %I:%M:%S %p')"
 	#printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
@@ -84,5 +87,5 @@ while true; do
 	[ $interval = 0 ] || [ $(($interval % 1800)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
-	sleep 1 && xsetroot -name "$updates      $(battery)      $(brightness)      $(cpu)      $(mem)      $(clock)      "
+  sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(clock)  "
 done
