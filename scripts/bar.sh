@@ -103,5 +103,5 @@ while true; do
 	[ $interval = 0 ] || [ $(($interval % 600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(vol)  $(clock)  "
+  sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(clock)  "
 done
