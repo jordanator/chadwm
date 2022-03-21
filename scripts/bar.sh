@@ -77,6 +77,22 @@ wlan() {
 	esac
 }
 
+vol() {
+	volume="$(pamixer --get-volume)"
+  ismute="$(pamixer --get-mute)"
+
+  if [ "$ismute" = true ]; then
+    printf "^c$green^ 婢 " 
+  else
+    if [ "$volume" -ge "50" ]; then
+      printf "^c$green^   $volume"
+    else
+      printf "^c$green^ 奄 $volume"
+    fi
+  fi
+}
+
+
 #clock() {
 #	printf "^c$black^ ^b$darkblue^ 󱑆 "
 #	printf "^c$black^^b$blue^ $(date '+%I:%M %p')  "
@@ -84,8 +100,8 @@ wlan() {
 
 while true; do
 
-	[ $interval = 0 ] || [ $(($interval % 1800)) = 0 ] && updates=$(pkg_updates)
+	[ $interval = 0 ] || [ $(($interval % 600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(clock)  "
+  sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(vol)  $(clock)  "
 done
