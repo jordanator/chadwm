@@ -146,7 +146,7 @@ static Key keys[] = {
     { MODKEY,                       XK_Return, spawn,           {.v = term }},  
     // { MODKEY,                       XK_Return, spawn,          SHCMD("st_pad && st")},  
 
-    {MODKEY|ControlMask,            XK_u,         spawn, SHCMD("flameshot gui -p ~/Pictures/screenshots")},
+    {MODKEY|ControlMask,            XK_u,         spawn, SHCMD("flameshot gui")},
     {MODKEY,                        XK_u,         spawn, SHCMD("flameshot full -p ~/Pictures/screenshots")},
     {MODKEY,                        XK_w,         spawn, SHCMD("$BROWSER")},
     {MODKEY,                        XK_semicolon, spawn, SHCMD("skippy-xd")},
@@ -158,8 +158,8 @@ static Key keys[] = {
     {MODKEY|ControlMask|ShiftMask,  XK_y,         spawn, SHCMD("ytfzf -D")},
     {MODKEY|ShiftMask,              XK_b,         spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &") },
     {MODKEY|ControlMask|ShiftMask,  XK_z,         spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
-    {MODKEY,                        XK_v,         spawn, SHCMD("vpnup")},
-    {MODKEY|ShiftMask,              XK_v,         spawn, SHCMD("vpndown")},
+    {MODKEY,                        XK_v,         spawn, SHCMD("connect-boom")},
+    // {MODKEY|ShiftMask,              XK_v,         spawn, SHCMD("vpndown")},
     {ControlMask|ShiftMask,         XK_l,         spawn, SHCMD("betterlockscreen -l dimblur")},
 
     {0, XF86MonBrightnessDown,    spawn, {.v = xd}},
