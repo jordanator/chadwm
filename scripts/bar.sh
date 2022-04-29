@@ -5,11 +5,11 @@
 
 interval=0
 
-# load colors!
-. ~/.config/chadwm/scripts/bar_themes/onedark
+# load colors
+. ~/.config/chadwm/scripts/bar_themes/nord
 
 cpu() {
-	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
+  cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
 	# printf "^c$green^  "
 	# printf "^c$white^ ^b$black^$cpu_val"
@@ -100,8 +100,8 @@ vol() {
 
 while true; do
 
-	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
-	interval=$((interval + 1))
+  [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
+  interval=$((interval + 1))
 
   sleep 1 && xsetroot -name "$updates  $(battery)  $(brightness) $(cpu)  $(mem)  $(clock)  "
 done
