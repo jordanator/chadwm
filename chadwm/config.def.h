@@ -1,6 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 #include <X11/XF86keysym.h>
+#define XF86MonBrightnessDown 0x1008ff03
+#define XF86MonBrightnessUp 0x1008ff02
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
@@ -203,8 +205,6 @@ static Key keys[] = {
     { MODKEY|ControlMask,               XK_9,       incrovgaps,     {.i = +1 } },
     { MODKEY|ControlMask|ShiftMask,     XK_9,       incrovgaps,     {.i = -1 } },
 
-<<<<<<< HEAD
-    { MODKEY|ControlMask,           XK_t,      togglegaps,     {0} },
     { MODKEY|ControlMask|ShiftMask, XK_d,      defaultgaps,    {0} },
 
     { MODKEY,                       XK_q,      killclient,     {0} },
