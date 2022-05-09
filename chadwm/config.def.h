@@ -158,7 +158,7 @@ static Key keys[] = {
     {MODKEY|ShiftMask,              XK_b,         spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &") },
     {MODKEY|ControlMask|ShiftMask,  XK_z,         spawn, SHCMD("rofi -show p -modi p:rofi-power-menu")},
     {MODKEY,                        XK_v,         spawn, SHCMD("connect-boom")},
-    // {MODKEY|ShiftMask,              XK_v,         spawn, SHCMD("vpndown")},
+    {MODKEY|ShiftMask,              XK_v,         spawn, SHCMD("rfkill block bluetooth")},
     {ControlMask|ShiftMask,         XK_l,         spawn, SHCMD("betterlockscreen -l dimblur")},
 
     {0, XF86MonBrightnessDown,    spawn, {.v = xd}},
